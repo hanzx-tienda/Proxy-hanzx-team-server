@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: proxy-hanzx-key-server
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: DB_PATH
+        value: /var/data/keys.db
+    disk:
+      name: key-database
+      mountPath: /var/data
+      sizeGB: 1
